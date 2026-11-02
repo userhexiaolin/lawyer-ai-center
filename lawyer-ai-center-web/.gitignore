@@ -1,0 +1,39 @@
+# Private runtime state, dependencies and local build outputs.
+**/node_modules/
+**/.pnpm-store/
+**/target/
+**/dist/
+**/.codex-runtime/
+**/.codex/
+**/.idea/
+**/__pycache__/
+**/.pytest_cache/
+**/.venv/
+*.pyc
+*.log
+*.log.gz
+*.local.sql
+*.local.json
+*.bak
+*.jks
+*.p12
+*.pfx
+/tmp/
+/data/
+/logs/
+/artifacts/
+/research-projects/
+# Environment files are private. Reviewed examples remain distributable.
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+**/application-local.yml
+**/application-local.yaml
+**/application-dev.yml
+# Local branding screenshots/build evidence may show accounts or documents.
+/branding/*preview.png
+/branding/browser-check.json
+# Keep dependency lockfiles in source distributions.
+!ruoyi-web/pnpm-lock.yaml

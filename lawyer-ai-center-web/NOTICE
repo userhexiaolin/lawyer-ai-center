@@ -1,0 +1,42 @@
+与律行 / YuLvXing
+Maintained by 江西前进系统工程有限公司
+Descriptive English name: Jiangxi Qianjin System Engineering Co., Ltd.
+Website: https://www.qjsec.com
+Contact: jjqianjin@163.com | +86 792 2199711
+
+本项目为衍生开发，保留上游版权、许可证、作者署名及原有权利。
+本公司的版权声明仅涉及其有权许可的新增贡献，不主张上游代码所有权。
+感谢下列项目的作者与贡献者：
+
+- ruoyi-ai — ageerle and contributors
+  https://github.com/ageerle/ruoyi-ai
+  Copyright (c) 2026 ruoyi-ai — MIT
+- RuoYi — yangzongzhuan and contributors
+  https://github.com/yangzongzhuan/RuoYi
+  Copyright (c) 2018 RuoYi — MIT
+- RuoYi-Vue-Plus — Lion Li / Dromara community and contributors
+  https://github.com/dromara/RuoYi-Vue-Plus
+  Copyright (c) 2019 RuoYi-Vue-Plus — MIT
+- RuoYi AI user and administration frontend projects — ageerle and contributors
+  https://github.com/ageerle/ruoyi-web
+  https://github.com/ageerle/ruoyi-admin
+  Existing in-directory license notices are retained.
+- ruoyi-element-ai — HeJiaYue520 and contributors
+  https://github.com/element-plus-x/ruoyi-element-ai
+  Copyright (c) 2025 HeJiaYue520 — MIT
+- Vue Vben Admin — Vben and contributors
+  https://github.com/vbenjs/vue-vben-admin
+  Copyright (c) 2024-present, Vben — MIT
+
+License copies and scope: THIRD_PARTY_NOTICES.md and docs/open-source/licenses/.
+These notices supplement, and do not replace, the original license notices.
+Dependencies and non-code materials retain their own terms.
+
+YuLvXing is an independent derivative, not an official upstream release.
+No upstream endorsement, sponsorship, partnership or warranty is implied.
+Please direct derivative-specific support and rights concerns to Qianjin.
+
+公司名称、LOGO及商标仅用于标识来源，不因代码的 MIT 许可自动授予
+商标许可或背书权利；这一说明不增加针对 MIT 代码的推广保留条件。
+Company logos, names and trademarks identify their owners; the code license
+does not itself grant trademark rights or a right to imply endorsement.

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:yulvxing:dossier:claims-json-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claims"],
+  "properties": {
+    "claims": {
+      "type": "array", "maxItems": 40,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["kind", "text", "originalText", "risk", "values", "sources"],
+        "properties": {
+          "kind": { "enum": ["excerpt", "subject", "date", "payment", "clause", "relation", "contradiction", "other"] },
+          "text": { "type": "string", "minLength": 1, "maxLength": 3000, "pattern": "\\S" },
+          "originalText": { "type": "string", "minLength": 1, "maxLength": 6000, "pattern": "\\S" },
+          "risk": { "enum": ["normal", "high"] },
+          "values": {
+            "type": "object", "additionalProperties": false,
+            "required": ["dateRaw", "amountRaw", "name", "currency"],
+            "properties": {
+              "dateRaw": { "type": ["string", "null"], "maxLength": 100 },
+              "amountRaw": { "type": ["string", "null"], "maxLength": 100 },
+              "name": { "type": ["string", "null"], "maxLength": 200 },
+              "currency": { "type": ["string", "null"], "maxLength": 100 }
+            }
+          },
+          "sources": {
+            "type": "array", "maxItems": 20,
+            "items": {
+              "type": "object", "additionalProperties": false, "required": ["anchorId", "relation"],
+              "properties": {
+                "anchorId": { "type": "string", "pattern": "^[1-9][0-9]{0,18}$", "maxLength": 19 },
+                "relation": { "enum": ["supports", "contradicts", "mentions"] }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

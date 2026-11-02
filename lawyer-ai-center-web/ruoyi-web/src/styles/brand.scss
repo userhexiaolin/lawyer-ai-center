@@ -1,0 +1,39 @@
+// Apply the default brand in config/design.ts to Element Plus (the store alone
+// does not apply CSS variables). Keep risk danger/warning and explicit low blue.
+:root:not(.dark) {
+  --el-color-primary: #f7b51c;
+  --el-color-primary-dark-2: #d99a0d;
+  --el-color-primary-light-3: #f9cb60;
+  --el-color-primary-light-5: #fbda8e;
+  --el-color-primary-light-7: #fde9bb;
+  --el-color-primary-light-8: #fdf0d2;
+  --el-color-primary-light-9: #fef8e8;
+  --brand-link: #946200;
+}
+:root:not(.dark) .el-button--primary:not(.is-plain, .is-text, .is-link) {
+  --el-button-text-color: #303133;
+  --el-button-hover-text-color: #303133;
+  --el-button-active-text-color: #303133;
+  --el-button-disabled-text-color: #606266;
+}
+:root:not(.dark) .el-link.el-link--primary {
+  --el-link-text-color: var(--brand-link);
+  --el-link-hover-text-color: #714b00;
+}
+:root:not(.dark) .el-button--primary.is-text,
+:root:not(.dark) .el-button--primary.is-link,
+:root:not(.dark) .el-button--primary.is-plain {
+  --el-button-text-color: var(--brand-link);
+  --el-button-hover-text-color: #714b00;
+  --el-button-hover-link-text-color: #714b00;
+  --el-button-active-color: #714b00;
+}
+:root:not(.dark) .workbench-entry.active {
+  color: var(--brand-link) !important;
+}
+:root:not(.dark) .el-checkbox {
+  --el-checkbox-checked-text-color: var(--brand-link);
+}
+:root:not(.dark) .el-radio-button {
+  --el-radio-button-checked-text-color: var(--yl-color-text);
+}

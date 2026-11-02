@@ -1,0 +1,79 @@
+# Production secrets are mandatory environment settings. Never copy development credentials.
+spring:
+  boot:
+    admin:
+      client:
+        enabled: false
+        username: ${MONITOR_USERNAME}
+        password: ${MONITOR_PASSWORD}
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    dynamic:
+      p6spy: false
+      primary: master
+      strict: true
+      datasource:
+        master:
+          type: ${spring.datasource.type}
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: ${DB_URL}
+          username: ${DB_USERNAME}
+          password: ${DB_PASSWORD}
+      hikari:
+        maxPoolSize: 20
+        minIdle: 5
+        connectionTimeout: 30000
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT:6379}
+      database: 0
+      password: ${REDIS_PASSWORD}
+      ssl.enabled: ${REDIS_SSL:true}
+sa-token:
+  jwt-secret-key: ${JWT_SECRET}
+sys:
+  upload:
+    path: ${UPLOAD_PATH}
+management:
+  server:
+    address: 127.0.0.1
+    port: ${MANAGEMENT_PORT:6041}
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: NEVER
+    logfile:
+      enabled: false
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+trace:
+  enabled: false
+mybatis-encryptor:
+  password: ${MYBATIS_ENCRYPT_PASSWORD:}
+  publicKey: ${MYBATIS_ENCRYPT_PUBLIC_KEY:}
+  privateKey: ${MYBATIS_ENCRYPT_PRIVATE_KEY:}
+api-decrypt:
+  enabled: false
+  publicKey: ${API_ENCRYPT_PUBLIC_KEY:}
+  privateKey: ${API_ENCRYPT_PRIVATE_KEY:}
+snail-job:
+  enabled: false
+  token: ${SNAIL_JOB_TOKEN:}
+mail:
+  enabled: false
+  pass: ${MAIL_PASSWORD:}
+mcp:
+  sse:
+    enabled: false
+websocket:
+  allowedOrigins: ${WEB_ALLOWED_ORIGINS}
+logging:
+  level:
+    root: INFO

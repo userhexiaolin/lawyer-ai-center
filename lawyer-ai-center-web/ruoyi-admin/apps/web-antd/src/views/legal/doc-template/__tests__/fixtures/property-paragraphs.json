@@ -1,0 +1,227 @@
+[
+  {
+    "id": "p1",
+    "text": "________先生/女士：",
+    "editable": true,
+    "fields": [
+      {
+        "id": "p1-0-8",
+        "blockId": "p1",
+        "start": 0,
+        "end": 8,
+        "original": "________",
+        "label": "待核字段1",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "id": "p3",
+    "text": "_________公司是_________小区的物业管理服务提供单位。根据物业服务合同及相关规定，业主应按照约定及时缴纳物业服务费。",
+    "editable": true,
+    "fields": [
+      {
+        "id": "p3-0-9",
+        "blockId": "p3",
+        "start": 0,
+        "end": 9,
+        "original": "_________",
+        "label": "待核字段1",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p3-12-21",
+        "blockId": "p3",
+        "start": 12,
+        "end": 21,
+        "original": "_________",
+        "label": "待核字段2",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "id": "p4",
+    "text": "截至____年____月____日，您名下位于____市____路____弄____号____室的房屋，尚欠物业服务费人民币________元（大写：________________）。欠费期间：____年____月至____年____月。",
+    "editable": true,
+    "fields": [
+      {
+        "id": "p4-2-6",
+        "blockId": "p4",
+        "start": 2,
+        "end": 6,
+        "original": "____",
+        "label": "待核字段1",
+        "kind": "text",
+        "unit": "年",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-7-11",
+        "blockId": "p4",
+        "start": 7,
+        "end": 11,
+        "original": "____",
+        "label": "待核字段2",
+        "kind": "text",
+        "unit": "月",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-12-16",
+        "blockId": "p4",
+        "start": 12,
+        "end": 16,
+        "original": "____",
+        "label": "待核字段3",
+        "kind": "text",
+        "unit": "日",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-23-27",
+        "blockId": "p4",
+        "start": 23,
+        "end": 27,
+        "original": "____",
+        "label": "待核字段4",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-28-32",
+        "blockId": "p4",
+        "start": 28,
+        "end": 32,
+        "original": "____",
+        "label": "待核字段5",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-33-37",
+        "blockId": "p4",
+        "start": 33,
+        "end": 37,
+        "original": "____",
+        "label": "待核字段6",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-38-42",
+        "blockId": "p4",
+        "start": 38,
+        "end": 42,
+        "original": "____",
+        "label": "待核字段7",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-43-47",
+        "blockId": "p4",
+        "start": 43,
+        "end": 47,
+        "original": "____",
+        "label": "待核字段8",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-62-70",
+        "blockId": "p4",
+        "start": 62,
+        "end": 70,
+        "original": "________",
+        "label": "待核字段9",
+        "kind": "text",
+        "unit": "元",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-75-91",
+        "blockId": "p4",
+        "start": 75,
+        "end": 91,
+        "original": "________________",
+        "label": "待核字段10",
+        "kind": "text",
+        "unit": "",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-98-102",
+        "blockId": "p4",
+        "start": 98,
+        "end": 102,
+        "original": "____",
+        "label": "待核字段11",
+        "kind": "text",
+        "unit": "年",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-103-107",
+        "blockId": "p4",
+        "start": 103,
+        "end": 107,
+        "original": "____",
+        "label": "待核字段12",
+        "kind": "text",
+        "unit": "月",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-109-113",
+        "blockId": "p4",
+        "start": 109,
+        "end": 113,
+        "original": "____",
+        "label": "待核字段13",
+        "kind": "text",
+        "unit": "年",
+        "presentation": "underline",
+        "enabled": true
+      },
+      {
+        "id": "p4-114-118",
+        "blockId": "p4",
+        "start": 114,
+        "end": 118,
+        "original": "____",
+        "label": "待核字段14",
+        "kind": "text",
+        "unit": "月",
+        "presentation": "underline",
+        "enabled": true
+      }
+    ]
+  }
+]

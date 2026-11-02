@@ -1,0 +1,3 @@
+-- Disable dossier claims consumer/entry, deploy compatible previous binary.
+-- Retain anchors, claims, suggestions, runs, usage, original files and append-only audit.
+-- Deliberately no DROP, DELETE or destructive restoration of newer business data.

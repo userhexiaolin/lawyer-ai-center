@@ -1,0 +1,9 @@
+page { --brand-primary: #{$brand-primary}; --brand-link: #{$brand-link}; --brand-success: #{$brand-success}; --brand-warning: #{$brand-warning}; --brand-danger: #{$brand-danger}; --brand-danger-text: #{$brand-danger-text}; --brand-low: #{$brand-low}; --brand-text: #{$brand-text}; --brand-muted: #{$brand-muted}; --brand-background: #{$brand-background}; --brand-surface: #{$brand-surface}; --brand-border: #{$brand-border}; --brand-pressed: #{$brand-pressed}; --brand-soft: #{$brand-soft}; background:$brand-background; color:$brand-text; }
+button[type=primary] { background:$brand-primary; color:$brand-text; }
+button[type=primary][disabled] { background:#FBE0A0; color:#606266; }
+button:active { filter:brightness(.96); }
+button:not([type=primary]) { color:$brand-text; }
+.history-session:active,.record:active,.question-card:active { background:$brand-pressed; }
+
+// Keep native mini actions readable and touchable without overriding vendor internals.
+button[size=mini] { box-sizing:border-box; min-height:44px; padding:8px 12px; font-size:14px; line-height:24px; }

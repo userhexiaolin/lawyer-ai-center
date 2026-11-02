@@ -1,0 +1,14 @@
+// Shared input proportions for the consultation home and conversation page.
+.consultation-composer {
+  .composer-input { display:block; box-sizing:border-box; width:100%; min-height:64px; max-height:180px; padding:0; margin:0; font-size:16px; line-height:1.6; color:var(--brand-text); background:transparent; overflow-y:auto; }
+  .composer-toolbar { display:flex; align-items:center; justify-content:space-between; gap:8px; width:100%; min-height:44px; margin-top:8px; }
+  .consultation-model-select { flex:1; min-width:0; max-width:calc(100% - 52px); }
+  .consultation-model-trigger { width:auto; max-width:100%; min-height:44px; padding:0 10px; border-radius:12px; font-size:14px; line-height:1.5; color:var(--brand-text); }
+  .composer-toolbar-space { flex:1; }
+  .composer-limit { flex-shrink:0; font-size:14px; line-height:1.5; color:var(--brand-muted); }
+  .composer-send { flex-shrink:0; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:44px; height:44px; min-height:44px; margin:0; padding:0; border:0; border-radius:50%; background:var(--brand-text); color:var(--brand-surface); font-size:25px; line-height:1; }
+  .composer-send::after { border:0; }
+  .composer-send[disabled] { background:var(--brand-border); color:var(--brand-muted); }
+  .composer-send:focus-visible { outline:2px solid var(--brand-link); outline-offset:3px; }
+}
+.composer-footnote { display:block; margin:8px auto 0; text-align:center; font-size:12px; line-height:1.5; color:var(--brand-muted); }

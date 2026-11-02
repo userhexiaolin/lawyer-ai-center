@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "relative_links_checked": 95,
+  "missing_links": [],
+  "utf8_replacement_characters": 0,
+  "python_syntax": "PASS",
+  "sql_build_check": "PASS"
+}

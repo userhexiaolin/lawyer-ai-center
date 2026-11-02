@@ -1,0 +1,832 @@
+{
+  "info": {
+    "name": "法律检索报告 MVP 验收",
+    "description": "先执行 SQL 迁移并部署后端。填写 baseUrl/clientId/tokenA/tokenB，A/B 必须为不同用户。仅针对本次创建的报告进行测试。最后一组会逻辑删除该报告。",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{tokenA}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:6040",
+      "type": "string"
+    },
+    {
+      "key": "clientId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "tokenA",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "tokenB",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "reportId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "lawItemId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "caseItemId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "tempItemId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "fileUrl",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "A 个人报告完整流程",
+      "item": [
+        {
+          "name": "01 A 创建报告",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Postman 检索报告验收\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });",
+                  "const result=pm.response.json(); pm.collectionVariables.set(\"reportId\", String(result.data.id));",
+                  "pm.test(\"ID 为字符串\", () => pm.expect(typeof result.data.id).to.eql(\"string\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 A 修改背景与结论",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"background\": \"用于验证快照导出。\",\n  \"conclusion\": \"依次核查材料。\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 A 添加失效法规快照",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemType\": \"law\",\n  \"lawName\": \"测试法规\",\n  \"articleNo\": \"第12条\",\n  \"lawStatus\": \"repealed\",\n  \"snapshotTitle\": \"测试法规第十二条\",\n  \"snapshotContent\": \"法条测试快照，仅用于接口验收。\",\n  \"sourceUrl\": \"https://example.org/law\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });",
+                  "const result=pm.response.json(); pm.collectionVariables.set(\"lawItemId\", String(result.data.item.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 A 同法同条去重",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemType\": \"law\",\n  \"lawName\": \"测试法规\",\n  \"articleNo\": \"第12条\",\n  \"lawStatus\": \"repealed\",\n  \"snapshotTitle\": \"测试法规第十二条\",\n  \"snapshotContent\": \"法条测试快照，仅用于接口验收。\",\n  \"sourceUrl\": \"https://example.org/law\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });",
+                  "pm.test(\"保留同一条目\", () => { const d=pm.response.json().data; pm.expect(d.duplicate).to.eql(true); pm.expect(d.item.id).to.eql(pm.collectionVariables.get(\"lawItemId\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 A 添加用户粘贴类案片段",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemType\": \"case_section\",\n  \"refId\": \"pasted-case\",\n  \"sectionKey\": \"裁判理由\",\n  \"snapshotTitle\": \"用户粘贴的类案测试片段\",\n  \"snapshotContent\": \"类案片段快照，仅用于接口验收。\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });",
+                  "const result=pm.response.json(); pm.collectionVariables.set(\"caseItemId\", String(result.data.item.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 A 添加待删除条目",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemType\": \"custom_text\",\n  \"snapshotTitle\": \"待删除条目\",\n  \"snapshotContent\": \"生成前删除。\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });",
+                  "const result=pm.response.json(); pm.collectionVariables.set(\"tempItemId\", String(result.data.item.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 A 全量排序",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items/order",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemIds\": [\n    \"{{caseItemId}}\",\n    \"{{lawItemId}}\",\n    \"{{tempItemId}}\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 A 删除自定义条目",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items/{{tempItemId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 A 详情与顺序",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });",
+                  "pm.test(\"两条且类案在前\", () => { const d=pm.response.json().data; pm.expect(d.items.length).to.eql(2); pm.expect(d.items[0].id).to.eql(pm.collectionVariables.get(\"caseItemId\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 A 我的报告分页",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/list?pageNum=1&pageSize=20"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 A 生成 Word",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/generate"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });",
+                  "const result=pm.response.json(); pm.collectionVariables.set(\"fileUrl\", String(result.data.fileUrl));",
+                  "pm.test(\"生成完成\", () => pm.expect(result.data.status).to.eql(\"generated\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12 A 下载 Word（使用 Send and Download）",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}{{fileUrl}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"返回有效 Word 附件\", () => {",
+                  "  pm.expect(pm.response.code).to.eql(200);",
+                  "  pm.expect(pm.response.headers.get(\"Content-Disposition\")).to.include(\"attachment\");",
+                  "  pm.expect(pm.response.text().slice(0,2)).to.eql(\"PK\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "B 跨用户归属拒绝",
+      "item": [
+        {
+          "name": "B 无法读取报告",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "B 无法修改报告",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"不应生效\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "B 无法删除报告",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "B 无法添加条目",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemType\": \"custom_text\",\n  \"snapshotTitle\": \"不应生效\",\n  \"snapshotContent\": \"不应生效\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "B 无法全量排序",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items/order",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemIds\": [\n    \"{{caseItemId}}\",\n    \"{{lawItemId}}\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "B 无法删除条目",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/items/{{lawItemId}}",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "B 无法生成报告",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/generate",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "B 无法下载报告",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}/download",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"跨用户被拒绝\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "最后执行：逻辑删除本次报告",
+      "item": [
+        {
+          "name": "A 逻辑删除",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"业务成功\", function () { pm.expect(pm.response.json().code).to.eql(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "A 删除后不可访问",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clientid",
+                "value": "{{clientId}}"
+              }
+            ],
+            "url": "{{baseUrl}}/legal/report/{{reportId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"已删除报告不可访问\", () => pm.expect(pm.response.json().code).to.eql(404));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

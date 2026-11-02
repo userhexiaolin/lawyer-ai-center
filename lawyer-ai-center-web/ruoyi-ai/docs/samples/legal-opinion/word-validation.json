@@ -1,0 +1,20 @@
+{
+  "samples" : [ {
+    "emptyKnowledgeNotice" : true,
+    "opponentView" : true,
+    "sixChapters" : true,
+    "sourceSha256" : "6a33e34a151cb1655ecc9f457530fcb2867766c23ca4b4ccbe132f45631f96cb",
+    "expectedFacts" : true,
+    "scenario" : 1,
+    "wordBytes" : 4954
+  }, {
+    "emptyKnowledgeNotice" : true,
+    "opponentView" : true,
+    "sixChapters" : true,
+    "sourceSha256" : "5b3e6254af3cada9cfbb0d24600d2683b1b85f8c9f28f1b3146522f4a6b6e45c",
+    "expectedFacts" : true,
+    "scenario" : 2,
+    "wordBytes" : 5239
+  } ],
+  "result" : "passed"
+}

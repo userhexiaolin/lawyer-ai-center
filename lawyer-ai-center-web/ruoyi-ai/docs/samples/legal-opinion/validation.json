@@ -1,0 +1,95 @@
+{
+  "result": "passed",
+  "samples": [
+    {
+      "scenario": 1,
+      "sourceSha256": "6a33e34a151cb1655ecc9f457530fcb2867766c23ca4b4ccbe132f45631f96cb",
+      "sections": [
+        {
+          "key": "timeline",
+          "title": "案件事实时间线",
+          "characters": 353,
+          "citations": 0
+        },
+        {
+          "key": "issues",
+          "title": "争议焦点",
+          "characters": 165,
+          "citations": 0
+        },
+        {
+          "key": "analysis",
+          "title": "法律分析",
+          "characters": 669,
+          "citations": 0
+        },
+        {
+          "key": "risks",
+          "title": "风险与可行性",
+          "characters": 217,
+          "citations": 0
+        },
+        {
+          "key": "strategy",
+          "title": "策略建议",
+          "characters": 395,
+          "citations": 0
+        },
+        {
+          "key": "references",
+          "title": "引用清单",
+          "characters": 16,
+          "citations": 0
+        }
+      ],
+      "opponentView": true,
+      "emptyKnowledgeNotice": true,
+      "rawCharacters": 2378
+    },
+    {
+      "scenario": 2,
+      "sourceSha256": "5b3e6254af3cada9cfbb0d24600d2683b1b85f8c9f28f1b3146522f4a6b6e45c",
+      "sections": [
+        {
+          "key": "timeline",
+          "title": "案件事实时间线",
+          "characters": 259,
+          "citations": 0
+        },
+        {
+          "key": "issues",
+          "title": "争议焦点",
+          "characters": 202,
+          "citations": 0
+        },
+        {
+          "key": "analysis",
+          "title": "法律分析",
+          "characters": 835,
+          "citations": 0
+        },
+        {
+          "key": "risks",
+          "title": "风险与可行性",
+          "characters": 323,
+          "citations": 0
+        },
+        {
+          "key": "strategy",
+          "title": "策略建议",
+          "characters": 444,
+          "citations": 0
+        },
+        {
+          "key": "references",
+          "title": "引用清单",
+          "characters": 16,
+          "citations": 0
+        }
+      ],
+      "opponentView": true,
+      "emptyKnowledgeNotice": true,
+      "rawCharacters": 2635
+    }
+  ]
+}

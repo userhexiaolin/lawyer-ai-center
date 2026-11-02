@@ -1,0 +1,3 @@
+-- Disable legal.dossier.enabled and stop consumers before binary rollback.
+-- Keep the additive bank tables, source versions, original objects and append-only changes.
+-- No DROP/DELETE: reverting a binary must not destroy manual corrections or audit records.

@@ -1,0 +1,113 @@
+{
+  "name": "与律行",
+  "appid": "__UNI__F986920",
+  "description": "模板管理、文书起草与律师常用工作台",
+  "versionName": "1.1.0",
+  "versionCode": "110",
+  "transformPx": false,
+  "app-plus": {
+    "usingComponents": true,
+    "nvueStyleCompiler": "uni-app",
+    "compilerVersion": 3,
+    "splashscreen": {
+      "alwaysShowBeforeRender": true,
+      "waiting": true,
+      "autoclose": true,
+      "delay": 0
+    },
+    "modules": {
+      "OAuth": {},
+      "Camera": {},
+      "Record": {},
+      "Gallery": {}
+    },
+    "distribute": {
+      "icons": {
+        "android": {
+          "mdpi": "static/brand/android/icon-48.png",
+          "hdpi": "static/brand/android/icon-72.png",
+          "xhdpi": "static/brand/android/icon-96.png",
+          "xxhdpi": "static/brand/android/icon-144.png",
+          "xxxhdpi": "static/brand/android/icon-192.png"
+        },
+        "ios": {
+          "appstore": "static/brand/ios/icon-1024.png",
+          "iphone": {
+            "app@2x": "static/brand/ios/icon-120.png",
+            "app@3x": "static/brand/ios/icon-180.png",
+            "spotlight@2x": "static/brand/ios/icon-80.png",
+            "spotlight@3x": "static/brand/ios/icon-120.png",
+            "settings@2x": "static/brand/ios/icon-58.png",
+            "settings@3x": "static/brand/ios/icon-87.png",
+            "notification@2x": "static/brand/ios/icon-40.png",
+            "notification@3x": "static/brand/ios/icon-60.png"
+          },
+          "ipad": {
+            "app": "static/brand/ios/icon-76.png",
+            "app@2x": "static/brand/ios/icon-152.png",
+            "proapp@2x": "static/brand/ios/icon-167.png",
+            "spotlight": "static/brand/ios/icon-40.png",
+            "spotlight@2x": "static/brand/ios/icon-80.png",
+            "settings": "static/brand/ios/icon-29.png",
+            "settings@2x": "static/brand/ios/icon-58.png",
+            "notification": "static/brand/ios/icon-20.png",
+            "notification@2x": "static/brand/ios/icon-40.png"
+          }
+        }
+      },
+      "android": {
+        "permissions": [
+          "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+          "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+          "<uses-feature android:name=\"android.hardware.camera\" android:required=\"false\"/>",
+          "<uses-feature android:name=\"android.hardware.camera.autofocus\" android:required=\"false\"/>"
+        ],
+        "permissionPhoneState": {
+          "request": "none"
+        },
+        "permissionExternalStorage": {
+          "request": "none"
+        }
+      },
+      "ios": {
+        "privacyDescription": {
+          "NSCameraUsageDescription": "用于拍摄合同并进行风险审查，仅在您主动拍摄时访问。",
+          "NSPhotoLibraryUsageDescription": "用于选择合同图片或材料上传。",
+          "NSPhotoLibraryAddUsageDescription": "用于您主动保存图片或导出资料。",
+          "NSMicrophoneUsageDescription": "用于您主动使用语音输入时录音。"
+        }
+      },
+      "sdkConfigs": {
+        "oauth": {
+          "univerify": {},
+          "apple": {}
+        }
+      }
+    }
+  },
+  "quickapp": {},
+  "mp-weixin": {
+    "appid": "wx53534e3a84a54fe7",
+    "setting": {
+      "urlCheck": true,
+      "minified": true,
+      "postcss": true
+    },
+    "usingComponents": true
+  },
+  "mp-alipay": {
+    "usingComponents": true
+  },
+  "mp-baidu": {
+    "usingComponents": true
+  },
+  "mp-toutiao": {
+    "usingComponents": true
+  },
+  "uniStatistics": {
+    "enable": false
+  },
+  "vueVersion": "2"
+}

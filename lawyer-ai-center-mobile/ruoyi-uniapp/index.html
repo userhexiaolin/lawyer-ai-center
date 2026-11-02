@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+        CSS.supports('top: constant(a)'))
+      document.write(
+        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+        (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+    </script>
+    <title>与律行</title>
+    <link rel="icon" type="image/x-icon" href="/static/brand/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/brand/apple-touch-icon.png" />
+    <meta name="application-name" content="与律行" />
+    <meta name="theme-color" content="#ffffff" />
+    <!--preload-links-->
+    <!--app-context-->
+  </head>
+  <body>
+    <div id="app"><!--app-html--></div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+{
+  "pages": [
+    {
+      "path": "pages/loading/loading",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/legal/source",
+      "style": {
+        "navigationBarTitleText": "法规原文"
+      }
+    },
+    {
+      "path": "pages/mine/billing",
+      "style": {
+        "navigationBarTitleText": "个人中心"
+      }
+    },
+    {
+      "path": "pages/index/quick-review",
+      "style": {
+        "navigationBarTitleText": "合同快速审查"
+      }
+    },
+    {
+      "path": "pages/cases/index",
+      "style": {
+        "navigationBarTitleText": "我的案件",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/index/home",
+      "style": {
+        "navigationBarTitleText": "合同快审",
+        "enablePullDownRefresh": false,
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/h5/login",
+      "style": {
+        "navigationBarTitleText": "H5登录",
+        "enablePullDownRefresh": false,
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/h5/register",
+      "style": {
+        "navigationBarTitleText": "H5登录",
+        "enablePullDownRefresh": false,
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "与律行",
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/content/content",
+      "style": {
+        "navigationBarTitleText": "内容查看",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/content/help",
+      "style": {
+        "navigationBarTitleText": "使用指南",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "登录",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/regiester/regiester",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "注册",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/tab/assistant",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "开通权益"
+      }
+    },
+    {
+      "path": "pages/index/question",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/index/write",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/index/creator",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "创作大师"
+      }
+    },
+    {
+      "path": "pages/index/assistant",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "与律行 · 法律助手"
+      }
+    },
+    {
+      "path": "pages/templates/index",
+      "style": {
+        "navigationBarTitleText": "模板管理",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/templates/categories",
+      "style": {
+        "navigationBarTitleText": "模板分类",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/templates/edit",
+      "style": {
+        "navigationBarTitleText": "编辑模板",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/drafting/index",
+      "style": {
+        "navigationBarTitleText": "文书起草",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/workbench/index",
+      "style": {
+        "navigationBarTitleText": "工作台",
+        "enablePullDownRefresh": false,
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "与律行",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F5F7FA"
+  },
+  "uniIdRouter": {}
+}

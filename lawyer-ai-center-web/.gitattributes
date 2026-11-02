@@ -1,0 +1,6 @@
+/README*.md text eol=lf
+/scripts/open_source/*.py text eol=lf
+/ruoyi-ai/docs/script/sql/*.sql text eol=lf
+/ruoyi-ai/docs/script/sql/bootstrap/* text eol=lf
+/ruoyi-ai/docs/script/sql/update/*.sql text eol=lf
+/docs/open-source/*.md text eol=lf

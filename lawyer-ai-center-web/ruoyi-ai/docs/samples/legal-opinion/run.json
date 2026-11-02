@@ -1,0 +1,6 @@
+{
+  "knowledgeRetrieval" : false,
+  "model" : "/models/Qwen/Qwen3.6-35B-A3B-FP8",
+  "generatedAt" : "2026-10-17T13:28:25.658794400Z",
+  "source" : "configured project chat model; dedicated opinion system prompt; real model responses"
+}

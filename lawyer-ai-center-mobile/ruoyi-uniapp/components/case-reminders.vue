@@ -1,0 +1,6 @@
+<template><view class="reminders"><text class="heading">今日 / 本周待办 <text v-if="rows.length" class="badge">{{rows.length}}</text></text><text v-if="!rows.length && !loading && !error">未来7天暂无待办</text><view v-for="r in rows" :key="r.caseId+r.kind" :class="r.level" @click="open(r)">{{r.date}} · {{r.title}} · {{r.kind}}</view><text v-if="error" class="danger" @click="load">{{error}} · 点击重试</text></view></template>
+<script>
+import {caseApi} from '@/common/api/cases';
+export default{props:{refreshKey:{type:Number,default:0}},data(){return{rows:[],error:'',loading:false};},watch:{refreshKey(){this.load();}},mounted(){this.load();},beforeDestroy(){this._disposed=true;},methods:{open(r){uni.navigateTo({url:'/pages/cases/index?id='+encodeURIComponent(r.caseId)});},async load(){if(this.loading)return;this.loading=true;this.error='';try{const r=await caseApi(this.$request,'/upcoming');if(!this._disposed)this.rows=r.data;}catch(e){if(!this._disposed)this.error=e.message;}finally{this.loading=false;}}}};
+</script>
+<style scoped>.reminders{padding:26rpx;margin:20rpx 0;background:white;border-radius:20rpx;font-size:16px}.heading{display:block;font-size:16px;font-weight:600;margin-bottom:18rpx}.reminders view{padding:14rpx 0}.danger{color:#c63737}.warning{color:#aa6500}.badge{background:#c63737;color:white;border-radius:20rpx;padding:0 12rpx}</style>

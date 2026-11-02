@@ -1,0 +1,326 @@
+/* 关联应用切换卡片样式 */
+.related-apps-card {
+	position: fixed;
+	bottom: 160rpx;
+	left: 30rpx;
+	right: 30rpx;
+	display: flex;
+	gap: 12rpx;
+	z-index: 999;
+}
+
+.related-app-item {
+	flex: 1;
+	padding: 16rpx;
+	background: #fff;
+	border: 1rpx solid #f0f0f0;
+	border-radius: 10rpx;
+	box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
+	font-size:14px;
+	color: #333;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: all 0.3s ease;
+
+	&:active {
+		transform: scale(0.95);
+		background: #f5f5f5;
+	}
+}
+
+/* 消息时间样式 */
+.message-time {
+	text-align: left;
+	font-size:14px;
+	color:var(--brand-muted);
+	margin: 20rpx 0 10rpx;
+	padding-left: 30rpx;
+}
+
+.message-time-right {
+	text-align: right;
+	padding-left: 0;
+	padding-right: 30rpx;
+}
+
+/* 消息中的图片样式 */
+.message-image {
+	max-width: 400rpx;
+	max-height: 400rpx;
+	border-radius: 8rpx;
+	margin-bottom: 10rpx;
+}
+
+/* 音频消息样式 */
+.audio-message {
+	display: flex;
+	align-items: center;
+	gap: 12rpx;
+	padding: 20rpx;
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+
+	&:active {
+		opacity: 0.7;
+	}
+}
+
+.audio-text {
+	font-size:16px;
+	color: #57546F;
+	flex: 1;
+}
+
+.audio-wave {
+	display: flex;
+	align-items: center;
+	gap: 4rpx;
+	height: 20rpx;
+}
+
+.wave-bar {
+	width: 3rpx;
+	height: 100%;
+	background-color: #52c41a;
+	border-radius: 2rpx;
+	animation: wave-bar-animation 1s ease-in-out infinite;
+
+	&:nth-child(1) {
+		animation-delay: 0s;
+	}
+
+	&:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+
+	&:nth-child(3) {
+		animation-delay: 0.4s;
+	}
+}
+
+@keyframes wave-bar-animation {
+	0%, 100% {
+		transform: scaleY(0.3);
+	}
+	50% {
+		transform: scaleY(1);
+	}
+}
+
+/* 错误消息样式 */
+.error-message {
+	background-color: #fff2f0 !important;
+	border: 1rpx solid #ffccc7 !important;
+	color: #ff4d4f !important;
+}
+
+.error-message ::v-deep .markdown-body {
+	color: #ff4d4f !important;
+}
+
+/* 图片预览容器 */
+.image-preview-container {
+	position: fixed;
+	bottom: 120rpx;
+	left: 0;
+	right: 0;
+	padding: 20rpx 30rpx;
+	background-color: #fff;
+	border-top: 1rpx solid #eee;
+	z-index: 999;
+}
+
+.image-preview-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.preview-image {
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 8rpx;
+	border: 1rpx solid #eee;
+}
+
+.remove-image {
+	position: absolute;
+	top: -10rpx;
+	right: -10rpx;
+	background-color: #fff;
+	border-radius: 50%;
+	width: 40rpx;
+	height: 40rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 底部输入栏样式调整 */
+.flooer {
+	display: flex;
+	align-items: flex-end;
+	padding: 20rpx 30rpx;
+	background-color: #fff;
+	border-top: 1rpx solid #eee;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 998;
+}
+
+.flooer_icon {
+	padding: 10rpx;
+	margin-right: 10rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.flooer_l {
+	flex: 1;
+	background-color: #F6F7FB;
+	border-radius: 8rpx;
+	padding: 10rpx;
+	margin-right: 10rpx;
+}
+
+.flooer_r {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.flooer_rpic {
+	width: 90rpx;
+	height: 90rpx;
+    margin-right: 10rpx;
+}
+
+/* 消息操作按钮样式 */
+.message-actions {
+	display: flex;
+	align-items: center;
+	gap: 20rpx;
+	margin-top: 10rpx;
+	padding: 10rpx 20rpx;
+}
+
+.action-btn {
+	display: flex;
+	align-items: center;
+	gap: 6rpx;
+	padding: 8rpx 16rpx;
+	background-color: #f5f5f5;
+	border-radius: 20rpx;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:active {
+		transform: scale(0.95);
+		background-color: #e8e8e8;
+	}
+}
+
+.action-text {
+	font-size:14px;
+	color:var(--brand-muted);
+	transition: color 0.3s ease;
+
+	&.active {
+		font-weight: bold;
+	}
+}
+
+/* 录音弹窗样式 */
+.record-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 60rpx 40rpx;
+}
+
+.record-animation {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 160rpx;
+	height: 160rpx;
+	margin-bottom: 30rpx;
+}
+
+.record-wave {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.wave {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 2rpx solid #ff4d4f;
+	border-radius: 50%;
+	opacity: 0;
+	animation: wave-animation 1.5s ease-out infinite;
+
+	&:nth-child(2) {
+		animation-delay: 0.5s;
+	}
+
+	&:nth-child(3) {
+		animation-delay: 1s;
+	}
+}
+
+@keyframes wave-animation {
+	0% {
+		transform: scale(0.5);
+		opacity: 0.8;
+	}
+	100% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+/* H5环境麦克风按钮禁用样式 */
+.flooer_icon_disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.record-text {
+	font-size:16px;
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 10rpx;
+}
+
+.record-tip {
+	font-size:16px;
+	color: #ff4d4f;
+	font-weight: bold;
+}
+
+
+.history-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  padding: 24rpx;
+  color:var(--brand-muted);
+  font-size:14px;
+}
+.history-action { color: #2979ff; }

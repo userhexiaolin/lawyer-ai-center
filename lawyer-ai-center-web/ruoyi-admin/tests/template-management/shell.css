@@ -1,0 +1,60 @@
+/* Only the test shell is synthetic; the page, forms, dialogs and controls are production components. */
+html {
+  --radius: 6px;
+}
+body {
+  margin: 0;
+  font: 14px/1.5 var(--font-family);
+  color: hsl(var(--foreground));
+  background: hsl(var(--background-deep));
+}
+* {
+  box-sizing: border-box;
+}
+.fixture-nav {
+  width: 210px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  padding: 24px 16px;
+  background: hsl(var(--card));
+  border-right: 1px solid hsl(var(--border));
+}
+.fixture-nav strong {
+  display: block;
+  font-size: 22px;
+}
+.fixture-nav span {
+  color: hsl(var(--muted-foreground));
+}
+.fixture-nav nav {
+  margin-top: 40px;
+}
+.fixture-nav nav div {
+  padding: 12px;
+  margin: 8px 0;
+}
+.fixture-nav .active {
+  color: hsl(var(--primary));
+  background: hsl(var(--muted));
+  border-radius: var(--radius);
+}
+.fixture-nav small {
+  position: absolute;
+  bottom: 24px;
+  color: hsl(var(--muted-foreground));
+}
+.fixture-workspace {
+  margin-left: 210px;
+  min-width: 0;
+}
+.fixture-topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: hsl(var(--card));
+  border-bottom: 1px solid hsl(var(--border));
+}
+.fixture-workspace main {
+  padding: 24px;
+  min-width: 0;
+}

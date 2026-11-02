@@ -1,0 +1,5 @@
+-- Non-destructive rollback: set LEGAL_DOSSIER_ENABLED=false and restore the previous verified binary.
+-- Keep all original objects, versions, pages, jobs and append-only logs.
+-- Original composite PK and old INSERT/SELECT paths remain compatible; id/current_version_id are optional.
+-- Do NOT DROP tables/columns once uploads or audit records exist.
+-- For an empty rehearsal schema only, discard the entire dedicated rehearsal database via the DBA procedure.

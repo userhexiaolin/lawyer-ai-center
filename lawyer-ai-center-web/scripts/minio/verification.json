@@ -1,0 +1,48 @@
+{
+  "wrongClientStatus": 200,
+  "files": [
+    {
+      "uploadCode": 200,
+      "type": "docx",
+      "cleanupCode": 200,
+      "downloadStatus": 200,
+      "unsignedStatus": 403,
+      "bytesMatch": true
+    },
+    {
+      "uploadCode": 200,
+      "type": "pdf",
+      "cleanupCode": 200,
+      "downloadStatus": 200,
+      "unsignedStatus": 403,
+      "bytesMatch": true
+    },
+    {
+      "uploadCode": 200,
+      "type": "png",
+      "cleanupCode": 200,
+      "downloadStatus": 200,
+      "unsignedStatus": 403,
+      "bytesMatch": true
+    },
+    {
+      "uploadCode": 200,
+      "type": "jpg",
+      "cleanupCode": 200,
+      "downloadStatus": 200,
+      "unsignedStatus": 403,
+      "bytesMatch": true
+    }
+  ],
+  "anonymousStatus": 200,
+  "anonymousCode": 401,
+  "wrongClientCode": 401,
+  "ordinaryUser": {
+    "uploadCode": 200,
+    "bytesMatch": true,
+    "objectCleanupCode": 200,
+    "userCleanupCode": 200,
+    "downloadStatus": 200,
+    "role": "user"
+  }
+}
